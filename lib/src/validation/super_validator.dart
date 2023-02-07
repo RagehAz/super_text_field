@@ -1,0 +1,100 @@
+part of super_text_field;
+
+class SuperValidator extends StatelessWidget {
+  /// --------------------------------------------------------------------------
+  const SuperValidator({
+    @required this.width,
+    @required this.validator,
+    @required this.focusNode,
+    this.autoValidate = true,
+    this.scrollPadding,
+    this.enabledBorderColor = const Color.fromARGB(0, 255, 255, 255),
+    this.disabledBorderColor = const Color.fromARGB(0, 255, 255, 255),
+    this.errorBorderColor = const Color.fromARGB(0, 255, 255, 255),
+    this.borderCorners = 0,
+
+    this.textHeight = 20,
+    this.errorTextColor = const Color.fromARGB(125, 233, 0, 0),
+    Key key
+  }) : super(key: key);
+  /// --------------------------------------------------------------------------
+  final double width;
+  final String Function() validator;
+  final bool autoValidate;
+  final FocusNode focusNode;
+  final EdgeInsets scrollPadding;
+  final Color enabledBorderColor;
+  final Color disabledBorderColor;
+  final Color errorBorderColor;
+  final double borderCorners;
+
+  final double textHeight;
+  final Color errorTextColor;
+  /// --------------------------------------------------------------------------
+  @override
+  Widget build(BuildContext context) {
+
+    return Center(
+      child: SizedBox(
+        width: width,
+        child: TextFormField(
+
+          focusNode: focusNode,
+
+          /// VALIDATION
+          autovalidateMode: autoValidate == true ? AutovalidateMode.always : AutovalidateMode.disabled,
+          validator: (String text) => validator(),
+
+          /// SPAN SPACING
+          scrollPadding: scrollPadding,
+
+          /// DISABLE TEXT FIELD
+          readOnly: true,
+          enabled: true,
+
+          /// BOX STYLING => COLLAPSE BOX HEIGHT TO ZERO + MAKE BORDER TRANSPARENT
+          decoration: InputDecoration(
+
+            /// COLLAPSES FIELD HEIGHT TO THE MINIMUM TEXT HEIGHT GIVEN
+            isCollapsed: true,
+
+            /// as field is enabled : this overrides the ( enabledBorder )
+            enabledBorder: SuperTextFieldController.createOutlineBorder(
+              borderColor: enabledBorderColor,
+              corners: borderCorners,
+            ),
+            /// as field is disabled : this overrides the ( disabledBorder )
+            disabledBorder: SuperTextFieldController.createOutlineBorder(
+              borderColor: disabledBorderColor,
+              corners: borderCorners,
+            ),
+            /// as field is in error : this overrides the ( errorBorder )
+            errorBorder: SuperTextFieldController.createOutlineBorder(
+              borderColor: errorBorderColor,
+              corners: borderCorners,
+            ),
+
+            /// ERROR TEXT STYLE
+            errorStyle: SuperTextFieldController.createErrorStyle(
+              textHeight: textHeight,
+              textItalic: true,
+              errorTextColor: errorTextColor,
+            ),
+            errorMaxLines: 3,
+            // errorText: 'initial state error text',
+
+          ),
+
+          /// TEXT STYLING => TO COLLAPSE ITS HEIGHT TO ZERO
+          style: const TextStyle(
+            height: 0,
+            fontSize: 0,
+          ),
+
+        ),
+      ),
+    );
+
+  }
+  /// --------------------------------------------------------------------------
+}

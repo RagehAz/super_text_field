@@ -1,0 +1,12 @@
+library super_text_field;
+// -----------------------------------------------------------------------------
+import 'package:flutter/material.dart';
+import 'package:stringer/stringer.dart';
+import 'package:super_text/super_text.dart';
+import 'src/text_field/b_super_text_field_box.dart';
+import 'src/text_field/c_text_field_form_switcher.dart';
+// -----------------------------------------------------------------------------
+part 'src/text_field/a_super_text_field.dart';
+part 'src/text_field/x_super_text_field_controller.dart';
+part 'src/validation/super_validator.dart';
+// -----------------------------------------------------------------------------
