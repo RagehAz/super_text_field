@@ -3,8 +3,8 @@ part of super_text_field;
 class SuperTextField extends StatefulWidget {
   /// --------------------------------------------------------------------------
   const SuperTextField({
-    @required this.globalKey,
     @required this.width,
+    this.globalKey,
     this.textController,
 
     /// main
@@ -161,7 +161,7 @@ class _SuperTextFieldState extends State<SuperTextField> {
 
     _scrollController = widget.scrollController ?? ScrollController();
 
-    setNotifier(
+    SuperTextFieldController.setNotifier(
         notifier: _textDirection,
         mounted: mounted,
         value: TextDir.autoSwitchTextDirection(
@@ -217,7 +217,7 @@ class _SuperTextFieldState extends State<SuperTextField> {
   void _onTextChanged(String val) {
 
     if (val != null) {
-      setNotifier(
+      SuperTextFieldController.setNotifier(
         notifier: _textDirection,
         mounted: mounted,
         value: TextDir.autoSwitchTextDirection(
