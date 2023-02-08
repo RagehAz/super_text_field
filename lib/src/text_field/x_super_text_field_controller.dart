@@ -80,12 +80,14 @@ class SuperTextFieldController {
   static TextStyle createHintStyle({
     @required double textHeight,
     @required bool textItalic,
+    @required String font,
   }) {
 
     return createTextStyle(
       color: const Color.fromARGB(80, 255, 255, 255),
       italic: textItalic,
       textHeight: textHeight * 0.8,
+      fontFamily: font,
     );
 
   }
@@ -94,14 +96,16 @@ class SuperTextFieldController {
   static TextStyle createErrorStyle({
     @required double textHeight,
     @required bool textItalic,
+    @required String font,
     Color errorTextColor,
   }){
 
     return createTextStyle(
       color: errorTextColor ?? const Color.fromARGB(255, 233, 0, 0),
       // fontWeight: FontWeight.w100,
-      textHeight: textHeight * 0.8,
+      textHeight: textHeight * 0.95,
       italic: true,
+      fontFamily: font,
     );
 
   }
@@ -135,6 +139,7 @@ class SuperTextFieldController {
     @required Color enabledBorderColor,
     @required Color focusedErrorBorderColor,
     @required Color errorBorderColor,
+    @required String font,
   }){
 
     final InputDecoration _inputDecoration = InputDecoration(
@@ -143,6 +148,7 @@ class SuperTextFieldController {
       hintStyle: createHintStyle(
         textHeight: textHeight,
         textItalic: textItalic,
+        font: font,
       ),
       alignLabelWithHint: true,
       contentPadding: textPadding ?? const EdgeInsets.all(10),
@@ -160,6 +166,7 @@ class SuperTextFieldController {
         textItalic: textItalic,
         textHeight: textHeight,
         errorTextColor: errorTextColor,
+        font: font,
       ),
       errorMaxLines: 3,
       // errorText: 'initial state error text',
@@ -291,4 +298,45 @@ class SuperTextFieldController {
 
 }
   // -----------------------------------------------------------------------------
+
+  /// VALIDATION
+
+  // --------------------
+  /// TESTED : WORKS PERFECT
+  static String bakeValidator({
+    @required String Function(String text) validator,
+    @required String text,
+    bool keepEmbeddedBubbleColor = false,
+  }){
+
+    if (validator == null){
+      return null;
+    }
+
+    else {
+
+      if (keepEmbeddedBubbleColor == true){
+        return validator(text);
+      }
+
+      else {
+        return _bakeValidatorMessage(validator(text));
+      }
+
+    }
+
+  }
+  // --------------------
+  /// TESTED : WORKS PERFECT
+  static String _bakeValidatorMessage(String message){
+    String _output;
+
+    if (message != null){
+      _output = TextMod.removeTextBeforeFirstSpecialCharacter(message, 'Δ');
+    }
+
+    return _output;
+  }
+  // -----------------------------------------------------------------------------
+  void f(){}
 }

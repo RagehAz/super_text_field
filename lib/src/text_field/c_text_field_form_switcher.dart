@@ -120,6 +120,30 @@ class TextFormFieldSwitcher extends StatelessWidget {
   final Color focusedBorderColor;
   final Color errorBorderColor;
   final Color focusedErrorBorderColor;
+
+    /// TESTED : WORKS PERFECT
+  static Color validatorTextColor({
+    @required String message,
+    @required Color errorColor,
+  }){
+    Color _color;
+
+    if (message != null){
+
+      final bool _colorAssigned = TextCheck.stringContainsSubString(string: message, subString: 'Δ');
+
+      // blog('getValidatorTextColor : _colorAssigned : $_colorAssigned');
+
+      /// SO WHEN ERROR IS ON + BUBBLE HAS COLOR OVERRIDE
+      if (_colorAssigned == true){
+        _color = errorColor;
+      }
+
+
+    }
+
+    return _color;
+  }
   // -----------------------------------------------------------------------------
   ///
   Widget counterBuilder(BuildContext context, {
@@ -135,29 +159,12 @@ class TextFormFieldSwitcher extends StatelessWidget {
     );
   }
   // --------------------
-  ///
-  String _validator(String text, {bool keepColor = false}){
-
-      if (validator == null) {
-        return null;
-      }
-
-      else {
-
-        if (keepColor == true) {
-          return validator(text);
-        }
-
-        else {
-          String _output;
-          if (text != null) {
-            _output = TextMod.removeTextBeforeFirstSpecialCharacter(text, 'Δ');
-          }
-          return _output;
-        }
-
-      }
-
+    String _validator(String text, {bool keepColor = false}){
+      return SuperTextFieldController.bakeValidator(
+        validator: validator,
+        text: text,
+        keepEmbeddedBubbleColor: keepColor,
+      );
     }
   // -----------------------------------------------------------------------------
   @override
@@ -205,12 +212,16 @@ class TextFormFieldSwitcher extends StatelessWidget {
       corners: corners,
       fieldColor: fieldColor,
       counterIsOn: counterIsOn,
-      errorTextColor: errorTextColor,
+      errorTextColor: TextFormFieldSwitcher.validatorTextColor(
+        errorColor: errorTextColor,
+        message: _validator(controller.text, keepColor: true),
+      ),
       textPadding: textPadding,
       enabledBorderColor: enabledBorderColor,
       focusedBorderColor: focusedBorderColor,
       errorBorderColor: errorBorderColor,
       focusedErrorBorderColor: focusedErrorBorderColor,
+      font: textFont,
     );
     // --------------------
     final TextAlign _textAlign = SuperTextFieldController.getTextAlignment(

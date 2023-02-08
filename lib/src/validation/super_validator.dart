@@ -6,6 +6,7 @@ class SuperValidator extends StatelessWidget {
     @required this.width,
     @required this.validator,
     @required this.focusNode,
+    @required this.font,
     this.autoValidate = true,
     this.scrollPadding,
     this.enabledBorderColor = const Color.fromARGB(0, 255, 255, 255),
@@ -30,6 +31,7 @@ class SuperValidator extends StatelessWidget {
 
   final double textHeight;
   final Color errorTextColor;
+  final String font;
   /// --------------------------------------------------------------------------
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,9 @@ class SuperValidator extends StatelessWidget {
           validator: (String text) => validator(),
 
           /// SPAN SPACING
-          scrollPadding: scrollPadding,
+          scrollPadding: scrollPadding ?? SuperTextFieldController.adaptiveScrollPadding(
+            context: context,
+          ),
 
           /// DISABLE TEXT FIELD
           readOnly: true,
@@ -79,6 +83,7 @@ class SuperValidator extends StatelessWidget {
               textHeight: textHeight,
               textItalic: true,
               errorTextColor: errorTextColor,
+              font: font,
             ),
             errorMaxLines: 3,
             // errorText: 'initial state error text',
