@@ -56,6 +56,10 @@ class SuperValidator extends StatelessWidget {
           readOnly: true,
           enabled: true,
 
+          // textDirection: textDirection,
+          // textAlign: ,
+          // textAlignVertical: ,
+
           /// BOX STYLING => COLLAPSE BOX HEIGHT TO ZERO + MAKE BORDER TRANSPARENT
           decoration: InputDecoration(
 
@@ -95,6 +99,64 @@ class SuperValidator extends StatelessWidget {
             height: 0,
             fontSize: 0,
           ),
+
+          /// MAIN
+          // key: ,
+          // controller: ,
+          // initialValue: ,
+          // inputFormatters: [],
+          // restorationId: ,
+          /// SCROLLING
+          // scrollController: ,
+          // scrollPhysics: ,
+          /// FOCUS
+          // autofocus: ,
+          /// CURSOR
+          // showCursor: ,
+          // cursorColor: ,
+          // cursorHeight: ,
+          // cursorRadius: ,
+          // cursorWidth: ,
+          // mouseCursor: ,
+          /// FUNCTIONS
+          // onTap: ,
+          // onChanged: ,
+          // onEditingComplete: ,
+          // onFieldSubmitted: ,
+          // onSaved: ,
+          // onTapOutside: ,
+          /// SIZING
+          // maxLines: ,
+          // minLines: ,
+          // expands: ,
+          // maxLength: ,
+          // maxLengthEnforcement: ,
+          /// COUNTER
+          // buildCounter: ,
+          /// BEHAVIOUR
+          // autocorrect: ,
+          // autofillHints: ,
+          // enableIMEPersonalizedLearning: ,
+          // enableInteractiveSelection: ,
+          // enableSuggestions: ,
+          /// OBSCURITY
+          // obscureText: ,
+          // obscuringCharacter: ,
+          /// MENU BAR
+          // contextMenuBuilder: ,
+          // toolbarOptions: ,
+          /// SELECTION
+          // selectionControls: ,
+          /// KEYBOARD
+          // keyboardAppearance: ,
+          // keyboardType: ,
+          // textInputAction: ,
+          /// STYLING
+          // smartDashesType: ,
+          // smartQuotesType: ,
+          // strutStyle: ,
+          // textCapitalization: ,
+
 
         ),
       ),
