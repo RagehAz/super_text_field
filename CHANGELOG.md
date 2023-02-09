@@ -1,3 +1,4 @@
+### 0.0.7 : fixed directions bugs
 ### 0.0.6 : fixed corner to be dynamic
 ### 0.0.5 : fixes
 ### 0.0.4 : fixes

@@ -21,6 +21,7 @@ class TextFormFieldSwitcher extends StatelessWidget {
 
     /// text
     @required this.textDirection,
+    @required this.appIsLTR,
     @required this.obscured,
     @required this.centered,
     @required this.minLines,
@@ -84,6 +85,7 @@ class TextFormFieldSwitcher extends StatelessWidget {
 
   /// TEXT
   final TextDirection textDirection;
+  final bool appIsLTR;
   final bool obscured;
   final bool centered;
   final int minLines;
@@ -156,6 +158,10 @@ class TextFormFieldSwitcher extends StatelessWidget {
       maxLength: maxLength,
       fieldColor: fieldColor,
       textHeight: textHeight,
+      letterSpacing: letterSpacing,
+      appIsLTR: appIsLTR,
+      textDirection: textDirection,
+      font: textFont,
     );
   }
   // --------------------

@@ -229,14 +229,28 @@ class SuperTextFieldController {
     @required int maxLength,
     @required double textHeight,
     @required Color fieldColor,
+    @required String font,
+    @required double letterSpacing,
+    @required bool appIsLTR,
+    @required TextDirection textDirection,
   }){
-    return SuperText(
+
+    return SizedBox(
+      width: textHeight * 4,
+      height: textHeight,
+      child: SuperText(
+      boxWidth: textHeight * 4,
       text: '$currentLength / $maxLength',
       weight: FontWeight.w100,
       textHeight: textHeight * counterTextHeightFactor,
-      // size: 2,
-      // scaleFactor: 1,
       boxColor: currentLength > maxLength ? const Color.fromARGB(125, 233, 0, 0) : fieldColor,
+      font: font,
+      letterSpacing: letterSpacing,
+      textDirection: textDirection == TextDirection.rtl ? TextDirection.ltr : TextDirection.rtl,
+      appIsLTR: appIsLTR,
+      centered: false,
+      margins: 0,
+    ),
     );
 
   }

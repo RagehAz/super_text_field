@@ -255,6 +255,7 @@ class _SuperTextFieldState extends State<SuperTextField> {
       textInputType: widget.textInputType,
       /// text
       textDirection: textDirection,
+      appIsLTR: widget.appIsLTR,
       obscured: isObscured,
       minLines: widget.minLines,
       maxLines: widget.maxLines,
