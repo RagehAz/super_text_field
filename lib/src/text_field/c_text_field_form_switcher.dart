@@ -76,7 +76,7 @@ class TextFormFieldSwitcher extends StatelessWidget {
   final bool autoValidate;
 
   /// box
-  final double corners;
+  final dynamic corners;
 
   /// keyboard
   final TextInputAction textInputAction;
@@ -206,6 +206,7 @@ class TextFormFieldSwitcher extends StatelessWidget {
     );
     // --------------------
     final InputDecoration _inputDecoration = SuperTextFieldController.createDecoration(
+      context: context,
       textHeight: textHeight,
       hintText: hintText, // ?? '...' TASK : TAKE CARE OF DEFAULT DOTS
       textItalic: textItalic,

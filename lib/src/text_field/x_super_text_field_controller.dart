@@ -112,11 +112,12 @@ class SuperTextFieldController {
   // --------------------
   /// TESTED : WORKS PERFECT
   static OutlineInputBorder createOutlineBorder({
+    @required BuildContext context,
     @required Color borderColor,
-    @required double corners,
+    @required dynamic corners,
   }) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(corners),
+      borderRadius: Borderers.superCorners(context: context, corners: corners),
       borderSide: BorderSide(
         color: borderColor,
         width: 0.5,
@@ -127,10 +128,11 @@ class SuperTextFieldController {
   // --------------------
   /// TESTED : WORKS PERFECT
   static InputDecoration createDecoration({
+    @required BuildContext context,
     @required double textHeight,
     @required String hintText,
     @required bool textItalic,
-    @required double corners,
+    @required dynamic corners,
     @required Color fieldColor,
     @required bool counterIsOn,
     @required Color errorTextColor,
@@ -154,14 +156,15 @@ class SuperTextFieldController {
       contentPadding: textPadding ?? const EdgeInsets.all(10),
 
       focusedBorder: createOutlineBorder(
+        context: context,
         borderColor: focusedBorderColor,
         corners: corners,
       ),
       enabledBorder: createOutlineBorder(
+        context: context,
         borderColor: enabledBorderColor,
         corners: corners,
       ),
-
       errorStyle: createErrorStyle(
         textItalic: textItalic,
         textHeight: textHeight,
@@ -172,19 +175,22 @@ class SuperTextFieldController {
       // errorText: 'initial state error text',
 
       focusedErrorBorder: createOutlineBorder(
+        context: context,
         borderColor: focusedErrorBorderColor,
         corners: corners,
       ),
-
       errorBorder: createOutlineBorder(
+        context: context,
         borderColor: errorBorderColor,
         corners: corners,
       ),
       border: createOutlineBorder(
+          context: context,
           borderColor: enabledBorderColor,
           corners: corners
       ),
       disabledBorder: createOutlineBorder(
+        context: context,
         borderColor: const Color.fromARGB(255, 200, 200, 200),
         corners: corners,
       ),

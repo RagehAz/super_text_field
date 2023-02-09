@@ -69,16 +69,19 @@ class SuperValidator extends StatelessWidget {
             /// as field is enabled : this overrides the ( enabledBorder )
             enabledBorder: SuperTextFieldController.createOutlineBorder(
               borderColor: enabledBorderColor,
+              context: context,
               corners: borderCorners,
             ),
             /// as field is disabled : this overrides the ( disabledBorder )
             disabledBorder: SuperTextFieldController.createOutlineBorder(
               borderColor: disabledBorderColor,
+              context: context,
               corners: borderCorners,
             ),
             /// as field is in error : this overrides the ( errorBorder )
             errorBorder: SuperTextFieldController.createOutlineBorder(
               borderColor: errorBorderColor,
+              context: context,
               corners: borderCorners,
             ),
 

@@ -1,6 +1,7 @@
 library super_text_field;
 // -----------------------------------------------------------------------------
 import 'package:flutter/material.dart';
+import 'package:scale/scale.dart';
 import 'package:stringer/stringer.dart';
 import 'package:super_text/super_text.dart';
 import 'src/text_field/b_super_text_field_box.dart';
