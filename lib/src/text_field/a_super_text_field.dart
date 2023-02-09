@@ -80,7 +80,7 @@ class SuperTextField extends StatefulWidget {
   /// box
   final double width;
   final dynamic margins;
-  final double corners;
+  final dynamic corners;
   final Color fieldColor;
 
   /// keyboard
